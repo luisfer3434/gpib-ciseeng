@@ -18,21 +18,15 @@
 
         <div class="cards">
 
-            <x-worship-card
-                title="Ibadah Hari Minggu"
-                day="Minggu"
-                time="09:00 WIB"
-            />
-            <x-worship-card
-                title="Ibadah Hari Minggu Pelayanan Anak"
-                day="Minggu"
-                time="09:00 WIB"
-            />
-            <x-worship-card
-                title="Ibadah Hari Minggu Pelayanan Teruna"
-                day="Minggu"
-                time="07:00 WIB"
-            />
+            @foreach ($worshipSchedules as $schedule )
+
+                <x-worship-card
+                    :title="$schedule->title"
+                    :day="$schedule->day"
+                    :time="$schedule->time">
+                </x-worship-card>
+            
+            @endforeach
 
         </div>
 

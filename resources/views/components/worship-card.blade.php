@@ -9,7 +9,8 @@
     </p>
 
     <strong>
-        {{ $time }}
+        {{ \Carbon\Carbon::parse($time)->format('H.i') }}
+        WIB
     </strong>
     
 </div>
