@@ -29,7 +29,22 @@
 
             <a href="#kontak">Kontak</a>
 
+            @auth
+
+                <a href="{{ route('admin.dashboard') }}">
+                    Dashboard
+                </a>
+
+            @else
+
+                <a href="{{ route('login') }}">
+                    Login
+                </a>
+
+            @endauth
+
         </nav>
 
     </div>
+    
 </header>
