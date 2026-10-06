@@ -84,12 +84,53 @@
 
         <div class="cards">
 
-            <x-news-card 
-                date="21 September 2026"
-                title="Warta Jemaat"
-                description="Informasi Warta Jemaat Tanggal 21 September 2026"
-                link="#"
-            />
+            @forelse ($news as $item)
+
+                <article class="card news-card">
+
+                    @if ($item->image)
+
+                        <img
+                            src="{{ asset(
+                                'storage/' . $item->image
+                            )}}"
+                            alt="{{ $item->title }}"
+                            class="news-image"
+                        >
+
+                    @endif
+
+                    <span class="date">
+
+                        {{ $item->published_at
+                            ? $item->published_at
+                                ->format('d M Y')
+                            : ''
+                        }}
+                
+                    </span>
+
+                    <h3>
+                        {{ $item->title }}
+                    </h3>
+
+                    <p>
+                        {{ $item->excerpt }}
+                    </p>
+
+                    <a href="#">
+                        Baca selengkapnya ->
+                    </a>
+
+                </article>
+
+            @empty
+
+                <p>
+                    Belum ada berita yang dipublikasikan.
+                </p>
+
+            @endforelse
 
         </div>
 

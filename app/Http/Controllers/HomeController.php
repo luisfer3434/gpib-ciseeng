@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\NewsController;
 use App\Models\WorshipSchedule;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,9 +18,18 @@ class HomeController extends Controller
         ->orderBy('time')
         ->get();
 
+        $news = News::where(
+            'is_published',
+            true
+        )
+        ->latest('published_at')
+        ->take(3)
+        ->get();
+
         return view(
             'home',
-            compact('worshipSchedules')
+            compact('worshipSchedules'),
+            compact('news')
         );
     }
 }

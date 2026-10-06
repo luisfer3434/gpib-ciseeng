@@ -57,15 +57,18 @@
                 </p>
             </a>
 
-            <div class="admin-card">
+            <a 
+                href="{{ route('admin.news.index') }}"
+                class="admin-card"
+            >
                 <h3>
                     Berita
                 </h3>
 
                 <p>
-                    Segera tersedia.
+                    Kelola berita seputar GPIB Ciseeng.
                 </p>
-            </div>
+            </a>
 
             <div class="admin-card">
                 <h3>
