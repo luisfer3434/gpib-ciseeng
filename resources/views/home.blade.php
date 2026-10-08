@@ -118,7 +118,7 @@
                         {{ $item->excerpt }}
                     </p>
 
-                    <a href="#">
+                    <a href="{{ route('news.show', $item) }}">
                         Baca selengkapnya ->
                     </a>
 
@@ -131,6 +131,17 @@
                 </p>
 
             @endforelse
+
+        </div>
+
+        <div class="news-more">
+
+            <a
+                href="{{ route('news.index') }}"
+                class="btn"
+            >
+                Lihat Semua Berita
+            </a>
 
         </div>
 

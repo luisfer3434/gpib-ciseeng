@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\NewsController;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NewsController as PublicNewsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\WorshipScheduleController;
-use App\Http\Controllers\Admin\NewController;
+use App\Http\Controllers\Admin\NewsController;
 use Illuminate\Container\Attributes\Auth;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -32,6 +33,16 @@ Route::post(
     )
     ->middleware('auth')
     ->name('logout');
+
+Route::get(
+        '/berita',
+        [PublicNewsController::class, 'index']
+)->name('news.index');
+
+Route::get(
+    '/berita/{news:slug}',
+    [PublicNewsController::class, 'show']
+)->name('news.show');
 
 // ADMIN
 
